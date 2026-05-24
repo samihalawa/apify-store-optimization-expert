@@ -23,6 +23,15 @@ Apify Store rules and recommendations change. Before giving final monetization o
 - SEO guide: `https://docs.apify.com/academy/actor-marketing-playbook/promote-your-actor/seo`
 - Marketing checklist: `https://docs.apify.com/academy/actor-marketing-playbook/promote-your-actor/checklist`
 - Product Hunt guide: `https://docs.apify.com/academy/actor-marketing-playbook/promote-your-actor/product-hunt`
+- Actor idea validation: `https://docs.apify.com/academy/build-and-publish/actor-ideas/actor-validation`
+- Actor URL: `https://docs.apify.com/academy/actor-marketing-playbook/actor-basics/importance-of-actor-url`
+- Actor naming: `https://docs.apify.com/academy/actor-marketing-playbook/actor-basics/name-your-actor`
+- Input schema UX: `https://docs.apify.com/academy/actor-marketing-playbook/product-optimization/how-to-create-a-great-input-schema`
+- Issues tab: `https://docs.apify.com/academy/actor-marketing-playbook/interact-with-users/issues-tab`
+- Emails to Actor users: `https://docs.apify.com/academy/actor-marketing-playbook/interact-with-users/emails-to-actor-users`
+- Store bio: `https://docs.apify.com/academy/actor-marketing-playbook/interact-with-users/your-store-bio`
+- Affiliates: `https://docs.apify.com/academy/actor-marketing-playbook/promote-your-actor/affiliates`
+- Actor bundles: `https://docs.apify.com/academy/actor-marketing-playbook/product-optimization/actor-bundles`
 - Automated tests: `https://docs.apify.com/platform/actors/development/automated-tests`
 - Input schema: `https://docs.apify.com/actors/development/input-schema`
 - Dataset schema: `https://docs.apify.com/platform/actors/development/actor-definition/dataset-schema`
@@ -30,6 +39,39 @@ Apify Store rules and recommendations change. Before giving final monetization o
 - API/store details if comparing competitors: `https://docs.apify.com/api/v2/store-get`
 
 Use official Apify documentation as primary source. Blogs and help articles are secondary unless they are from Apify and current. If docs conflict, current `docs.apify.com` wins.
+
+## Idea Validation Before Build Or Repositioning
+
+Use this section when the user is choosing a new Actor, deciding whether to publish, or asking how to make more money before there is clear traction.
+
+Validate demand before building or heavily repositioning:
+
+1. SEO demand:
+   - Check Google Keyword Planner, Google autocomplete, related searches, and simple keyword tools.
+   - Look for multiple related terms such as "`<target> scraper`", "`<target> API`", "`download <target> data`", "`<target> price tracker`".
+   - Treat low search volume as niche, not automatically bad; it means direct marketing and community distribution matter more.
+2. Trend health:
+   - Use Google Trends to distinguish growing demand from declining or one-time viral spikes.
+   - Rising low-volume keywords can be better than high-volume declining markets.
+3. Community pain:
+   - Search Reddit, Hacker News, Stack Overflow, X/LinkedIn, Discord, Facebook groups, and niche forums.
+   - Save exact user language and recurring asks. Use that language in Store descriptions, README headings, and examples.
+   - Spending signals are strongest: "currently paying $X/month", "upgraded to paid because", competitor pricing mentions, or feature complaints from paying users.
+4. GitHub/open-source signals:
+   - Stars, star growth, forks, recent commits, high-upvote issues, and unresolved themes can reveal demand and gaps.
+5. Product Hunt and broader market:
+   - Review recent automation/data launches for taglines, visuals, positioning, and upvote patterns.
+   - Search non-Apify SaaS/API competitors because the buyer compares against the full market, not only Apify Store.
+6. Apify Store saturation:
+   - 1-5 similar Actors: possible blue ocean or unproven demand; validate carefully.
+   - 10-30 similar Actors: healthy competition; differentiation is required.
+   - 50+ similar Actors: saturated; continue only with an obvious gap, underserved niche, or stronger distribution.
+   - If an Apify-maintained leader has very high users and the new Actor has no clear angle, recommend adjacent specialization instead of direct cloning.
+7. Direct feedback:
+   - Ask likely users if they would use or pay for the exact workflow.
+   - Specific questions about pricing, fields, exports, integrations, or limits count more than "sounds interesting".
+
+When optimizing an existing Actor, use the same validation logic to decide whether to improve, niche down, rename, bundle, or build adjacent Actors.
 
 ## First Pass
 
@@ -68,6 +110,41 @@ Optimize in this order because each layer compounds the next:
 9. Retention: issue response, monitoring, updates, changelog, examples, integrations.
 
 Do not make drastic pricing changes without explicitly labeling the risk. Prefer fast revenue gains: fill missing Store fields, improve README, add schemas, set PPE correctly, add default test tasks, and promote with one or two high-intent pieces of content.
+
+## Naming And Actor URL
+
+Treat the Actor URL or technical name as a permanent SEO and integration asset.
+
+Rules:
+
+- Choose the technical name early and avoid changing it after publish.
+- Changing the Actor URL can reset Google associations and break user API integrations.
+- If a URL must change, do it only in the first few days or with user communication.
+- Actor name can be changed more freely than URL, but frequent changes can still confuse users.
+- Keep the technical name short, ideally under four words.
+- Prefer nouns and tool-type keywords: `scraper`, `extractor`, `data`, `api`, `finder`, `downloader`, `checker`.
+- Avoid filler adjectives and verbs in the URL such as `best`, `fast`, `light`, `scrape`, `automate`; use those in copy if needed.
+- Match Actor name, SEO name, URL, and GitHub repo name when it helps clarity, but use SEO name for keyword expansion.
+- Check Store URLs for similar Actors and avoid near-duplicates. Google and users may favor the earlier page.
+
+Naming patterns:
+
+```text
+Technical name: <domain>-scraper
+Actor name: <Domain> Scraper
+SEO name: <Domain> Data Scraper or <Domain> API
+GitHub repo: actor-<domain>-scraper
+```
+
+For service-specific Actors:
+
+```text
+Technical name: <domain>-<service>-scraper
+Actor name: <Domain> <Service> Scraper
+GitHub repo: actor-<domain>-<service>-scraper
+```
+
+For non-scraping Actors, name by function and buyer search intent, not by implementation.
 
 ## Monetization Guidance
 
@@ -190,6 +267,23 @@ Input schema:
 - Add validation limits for max pages, max items, date ranges, and URL formats.
 - Group advanced controls below simple controls.
 - Avoid exposing internal debug flags as primary inputs.
+
+Input schema UX:
+
+- Treat the input schema as the Actor's conversion UI. Many users decide whether to trust and pay from this screen.
+- Add a short top-level `description` that reassures the user, names the easiest way to try the Actor, links to a guide when useful, and states any immediate caveat.
+- Keep field titles short and noun-like. Put instructions, examples, and caveats in the field `description` tooltip.
+- Tooltips should usually start with imperative verbs such as `Enter`, `Add`, `Choose`, or `Use`.
+- Use low-cost `prefill` values. High default limits make first runs slow, expensive, and churn-inducing.
+- Use prefills to show accepted formats: example URLs, date formats, IDs, keywords, or handles.
+- Use `default` placeholder-style values when the user needs to see an example without actually submitting it.
+- Word boolean toggles positively and avoid negation traps. A toggle like `Scrape open places only` is clearer than `Skip closed places` when the default matters.
+- Use `sectionCaption` to group alternate input modes, filters, output options, and advanced settings.
+- Use `sectionDescription` for section-level caveats, pricing implications, or risk notes that must be visible before a user clicks a tooltip.
+- Keep technical proxy/browser/debug fields visually secondary and below the main path.
+- Use target-site terminology such as `videos`, `tweets`, `listings`, `places`, or `products` instead of generic `results` when it matches user expectations.
+- Use emojis only as sparse, consistent visual anchors across schema and README. Never rely on them for critical meaning, and ensure text still works without them.
+- If users repeatedly ask obvious questions, make mistakes, or churn after starting, audit input schema before blaming demand or pricing.
 
 Dataset schema:
 
@@ -353,6 +447,8 @@ Quick wins:
 - Add the Actor to a portfolio/content hub.
 - Add it to email signature or freelance profile.
 - Ask early users for feedback after successful runs.
+- Set up the Apify Store bio under `Settings > Account > Profile` with contact email, website, GitHub, X/LinkedIn/Discord, booking link, newsletter, YouTube/blog, portfolio links, and a short credibility summary.
+- Cross-link related Actors from each Actor README because automatic related-Actor recommendations may not cover different categories by the same creator.
 
 Video:
 
@@ -383,6 +479,40 @@ Product Hunt:
 - Engage in comments all day.
 - Keep messaging consistent across Product Hunt, Store, and social posts.
 
+User communication and retention:
+
+- Use `Messaging > Emails > Compose new` to email users of a specific Actor when there is a clear reason.
+- Good reasons: new feature, target website change, output/schema change, pricing/payment-model change, deprecation/unpublishing, major issue, fixed outage, webinar, newsletter with multiple useful updates.
+- Do not spam. Keep emails concise, friendly, direct, and action-oriented.
+- Send a preview to yourself before sending to all users.
+- For pricing or breaking changes, send warning and reminder emails with dates, impact, migration steps, and related Actors if applicable.
+- For newsletters, bundle 2-3 updates instead of emailing every tiny change.
+
+Issues tab:
+
+- Treat the public Issues tab as support, trust signal, and SEO surface.
+- Response time is visible in Actor metrics, so silence damages conversion.
+- Respond quickly even when the fix will take time; keep users updated.
+- Ask reporters to share the run and exact input; shared runs are private context, not public page content.
+- Use screenshots, run links, and exact steps in responses.
+- Encourage users to search existing issues before creating duplicates.
+- Maintain ready answers for common categories: bug, feature request, question, usage mistake, target-site change, pricing/export confusion.
+- Close issues only with a clear resolution or next path.
+
+Affiliate and services revenue:
+
+- Add Apify affiliate links and professional-services referral strategy when the user asks for total Apify revenue, not only Store Actor revenue.
+- Affiliate content works best when it demonstrates a real workflow: tutorials, courses, webinars, client recommendations, examples repos, and community answers.
+- Track which channels produce referrals and double down on the winners.
+
+Actor bundles:
+
+- Bundles are chains of Actors unified by one use case. They can be valuable when users want a complete workflow and do not want to run multiple Actors manually.
+- Bundle positioning must explain the end goal, not just list component Actors.
+- Profitability is less predictable because bundles can be top-of-funnel and users may not search for them directly.
+- For bundles, use README pricing to explain how component Actor pricing affects the final run cost.
+- Do not build a bundle when a single focused Actor with strong search intent would rank and convert better.
+
 ## Competitor And Pricing Research
 
 When asked to maximize revenue, inspect competitors instead of guessing:
@@ -393,6 +523,9 @@ When asked to maximize revenue, inspect competitors instead of guessing:
 4. Search Google for non-Apify alternatives and SaaS/API pricing.
 5. Identify the buyer segment: developer, ops team, ecommerce seller, lead-gen agency, data team, AI workflow builder.
 6. Recommend a price anchored to value and margin.
+7. Inspect competitor Issues tabs for repeated unresolved pain points. Those are differentiation opportunities.
+8. Inspect competitor README first quarter, input complexity, output examples, and pricing explanation. These often explain conversion gaps better than feature lists.
+9. Look for spending signals outside Apify: users naming current tools, monthly budgets, paid upgrades, invoices, or complaints about competitor pricing.
 
 Use the Store API if useful:
 
@@ -412,6 +545,7 @@ CURRENT STATE:
 - Monetization:
 - Missing Store fields:
 - Current risks:
+- Demand/competition:
 
 REVENUE PRIORITIES:
 1. Highest impact now
@@ -421,6 +555,7 @@ REVENUE PRIORITIES:
 PASTE-READY PUBLICATION FIELDS:
 - Actor name:
 - SEO name:
+- Technical name / URL:
 - Description:
 - SEO description:
 - Categories:
@@ -451,6 +586,8 @@ QUALITY SCORE:
 PROMOTION:
 - First 7 days:
 - First 30 days:
+- Issues/email/user-retention:
+- Store bio/cross-promotion:
 
 IMPLEMENTATION:
 - Files to edit:
@@ -486,6 +623,11 @@ When optimizing an Actor like a multi-platform price scraper, emphasize:
 ## Hard Rules
 
 - Do not claim revenue optimization is complete from generic advice. Produce concrete publication fields, README copy, schema recommendations, monetization event design, and verification steps.
+- Do not skip market validation when the user is choosing a new Actor or deciding whether an Actor is worth major investment.
+- Do not change an established Actor URL lightly; it is both SEO and integration surface.
+- Do not make the first-run default expensive or slow.
+- Do not bury critical caveats only in README when they belong in input schema descriptions or section descriptions.
+- Do not leave Issues tab unanswered; public silence is a conversion and trust problem.
 - Do not recommend rental for new Actors unless official docs have changed.
 - Do not recommend price increases without checking current monetization-change rules and user communication needs.
 - Do not hide platform costs or make pricing hard to predict.
